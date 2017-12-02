@@ -1,0 +1,93 @@
+﻿@model GopikaFrontDesk.Guest
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    @Styles.Render("~/Content/css")
+    <style>
+        body {
+            background: none;
+            font-size:1.5em;
+        }
+    </style>
+    </head>
+
+<body>
+<header>
+    <img src="~/Custom/Layer.png" width=80% />
+    <hr />
+</header>
+    @{
+        ViewBag.Title = "Details";
+        Layout = "";
+    }
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h2>Guest Details of @Model.Firstn @Model.Surn </h2>
+                <hr />
+
+                <dl class="dl-horizontal">
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Address)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Address)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Mobile)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Mobile)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Email)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Email)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.CheckIn)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.CheckIn)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.CheckOut)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.CheckOut)
+                    </dd>
+
+                    <dt>
+                        Room No.
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.RoomNo)
+                    </dd>
+
+                </dl>
+
+            </div>
+            <div class="col-md-8">
+                <img src="@ViewBag.fn" width=70% />
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

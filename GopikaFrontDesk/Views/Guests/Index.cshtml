@@ -1,0 +1,123 @@
+﻿@model PagedList.IPagedList<GopikaFrontDesk.Guest>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Guest List";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @using (Html.BeginForm("Index", "Guests", FormMethod.Get))
+    {
+    <p>
+        <label>Search by First or Surname: </label> @Html.TextBox("SearchString", ViewBag.searchString as string)
+        <label> &nbsp;  Room No.:</label>  @Html.TextBox("RoomNo", ViewBag.RoomNo as string)
+        &nbsp;  <label for="from">Stay between: </label>
+<input type="text" id="from" name="from" value="@ViewBag.From">
+<label for="to">and</label>
+<input type="text" id="to" name="to" value="@ViewBag.To"> 
+        <input type="submit" value="Search" />
+
+    </p>
+    }
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Firstn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Surn)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Mobile)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().CheckIn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().CheckOut)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().RoomNo)
+        </th>
+        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Firstn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Surn)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.Mobile)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.CheckIn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CheckOut)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RoomNo)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Print", "Print", new { id=item.Id },new { @target = "_blank"  })
+        </td>
+    </tr>
+}
+
+</table>
+
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, searchString = ViewBag.searchString, RoomNo = ViewBag.RoomNo, From = ViewBag.From, To = ViewBag.To }))
+
+<script>
+  $( function() {
+      var dateFmt = "dd-M-yy",
+      from = $( "#from" )
+        .datepicker({
+          defaultDate: "-3m",
+          changeMonth: true,
+          numberOfMonths: 3,
+          dateFormat: dateFmt
+        })
+        .on( "change", function() {
+          to.datepicker( "option", "minDate", getDate( this ) );
+        }),
+      to = $( "#to" ).datepicker({
+          defaultDate: "-2m",
+        changeMonth: true,
+        numberOfMonths: 3,
+        dateFormat: dateFmt
+      })
+      .on( "change", function() {
+        from.datepicker( "option", "maxDate", getDate( this ) );
+      });
+
+    function getDate( element ) {
+      var date;
+      try {
+        date = $.datepicker.parseDate( dateFmt, element.value );
+      } catch( error ) {
+        date = null;
+      }
+
+      return date;
+    }
+  } );
+</script>

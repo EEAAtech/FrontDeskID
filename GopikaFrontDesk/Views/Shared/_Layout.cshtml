@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Gopika Guest IDs</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/themes/base/css")
+    @Styles.Render("~/Content/dtpic")
+</head>
+
+<body>
+    <div class="container body-content Menu">
+        <ul class="nav navbar-nav">
+            <li class="ButtonNew"><a href="~/Home" ><span class="glyphicon glyphicon-home"></span></a></li>
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+            <li class="ButtonNew"><a href="~/Guests" style=""><span class="glyphicon glyphicon-search"></span></a></li>
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+            <li class="ButtonNew"><a href="~/Guests/Create" style=""><span class="glyphicon glyphicon-file"></span></a></li>
+        </ul>
+    </div>
+    <p>&nbsp;</p>
+    <a id="Emblem"  href="~/"><img src="~/Custom/Gopika.png" alt="Gopika ID System" /> </a>
+    @Scripts.Render("~/bundles/jquery")
+
+    @Scripts.Render("~/bundles/jqueryui")
+    
+    @Scripts.Render("~/bundles/jquerydtpicker")
+     <div class="container body-content Rounded_Rectangle_1 ">
+        @RenderBody()
+        
+        <footer>
+            
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script type="text/javascript">
+        //http://trentrichardson.com/examples/timepicker/#basic_examples
+    $(function () {
+        $('input[type=datetime]').datetimepicker({
+            dateFormat: "dd-M-yy",
+            timeFormat: "hh:mm TT",
+            hourGrid: 4,
+            minuteGrid: 10,
+            stepMinute: 5
+        });
+
+        jQuery.validator.methods["date"] = function (value, element) { return true; } 
+    });
+    </script>
+</body>
+</html>
