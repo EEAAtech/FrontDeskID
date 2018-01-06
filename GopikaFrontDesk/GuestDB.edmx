@@ -42,7 +42,7 @@
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="CheckIn" Type="DateTime" Precision="3" />
           <Property Name="CheckOut" Type="DateTime" Precision="3" />
-          <Property Name="RoomNo" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="RoomNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Path" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
