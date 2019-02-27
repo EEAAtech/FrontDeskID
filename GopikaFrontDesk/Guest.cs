@@ -15,8 +15,8 @@ namespace GopikaFrontDesk
     public partial class Guest
     {
         public int Id { get; set; }
-        public string Firstn { get; set; }
-        public string Surn { get; set; }
+        public string Firstn1 { get; set; }
+        public string Surn1 { get; set; }
         public string Address { get; set; }
         public string Mobile { get; set; }
         public string Email { get; set; }
@@ -24,5 +24,16 @@ namespace GopikaFrontDesk
         public Nullable<System.DateTime> CheckOut { get; set; }
         public string RoomNo { get; set; }
         public string Path { get; set; }
+        public string Firstn2 { get; set; }
+        public string Surn2 { get; set; }
+        public string Firstn3 { get; set; }
+        public string Surn3 { get; set; }
+        public string Company { get; set; }
+        public string GST { get; set; }
+        public string BillingInst { get; set; }
+        public string AdvDets { get; set; }
+        public string RoomType { get; set; }
+        public Nullable<decimal> Tarrif { get; set; }
+        public string Nationality { get; set; }
     }
 }

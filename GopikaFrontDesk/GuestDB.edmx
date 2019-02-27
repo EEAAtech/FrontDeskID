@@ -10,15 +10,26 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Firstn" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Surn" Type="varchar" MaxLength="50" />
+          <Property Name="Firstn1" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Surn1" Type="varchar" MaxLength="50" />
           <Property Name="Address" Type="varchar" MaxLength="300" />
           <Property Name="Mobile" Type="varchar" MaxLength="50" />
           <Property Name="Email" Type="varchar" MaxLength="50" />
           <Property Name="CheckIn" Type="datetime" />
           <Property Name="CheckOut" Type="datetime" />
-          <Property Name="RoomNo" Type="varchar" MaxLength="5" />
+          <Property Name="RoomNo" Type="varchar" MaxLength="50" />
           <Property Name="Path" Type="varchar" MaxLength="50" />
+          <Property Name="Firstn2" Type="varchar" MaxLength="50" />
+          <Property Name="Surn2" Type="varchar" MaxLength="50" />
+          <Property Name="Firstn3" Type="varchar" MaxLength="50" />
+          <Property Name="Surn3" Type="varchar" MaxLength="50" />
+          <Property Name="Company" Type="varchar" MaxLength="100" />
+          <Property Name="GST" Type="varchar" MaxLength="20" />
+          <Property Name="BillingInst" Type="varchar" MaxLength="300" />
+          <Property Name="AdvDets" Type="varchar" MaxLength="300" />
+          <Property Name="RoomType" Type="varchar" MaxLength="50" />
+          <Property Name="Tarrif" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Nationality" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityContainer Name="GopikaModelStoreContainer">
           <EntitySet Name="Guests" EntityType="Self.Guests" Schema="dbo" store:Type="Tables" />
@@ -35,8 +46,8 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Firstn" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Surn" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Firstn1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Surn1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Address" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
           <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -44,6 +55,17 @@
           <Property Name="CheckOut" Type="DateTime" Precision="3" />
           <Property Name="RoomNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Path" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Firstn2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Surn2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Firstn3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Surn3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Company" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="GST" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="BillingInst" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="AdvDets" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="RoomType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Tarrif" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Nationality" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -54,6 +76,17 @@
           <EntitySetMapping Name="Guests">
             <EntityTypeMapping TypeName="GopikaModel.Guest">
               <MappingFragment StoreEntitySet="Guests">
+                <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+                <ScalarProperty Name="Tarrif" ColumnName="Tarrif" />
+                <ScalarProperty Name="RoomType" ColumnName="RoomType" />
+                <ScalarProperty Name="AdvDets" ColumnName="AdvDets" />
+                <ScalarProperty Name="BillingInst" ColumnName="BillingInst" />
+                <ScalarProperty Name="GST" ColumnName="GST" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="Surn3" ColumnName="Surn3" />
+                <ScalarProperty Name="Firstn3" ColumnName="Firstn3" />
+                <ScalarProperty Name="Surn2" ColumnName="Surn2" />
+                <ScalarProperty Name="Firstn2" ColumnName="Firstn2" />
                 <ScalarProperty Name="Path" ColumnName="Path" />
                 <ScalarProperty Name="RoomNo" ColumnName="RoomNo" />
                 <ScalarProperty Name="CheckOut" ColumnName="CheckOut" />
@@ -61,8 +94,8 @@
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Mobile" ColumnName="Mobile" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Surn" ColumnName="Surn" />
-                <ScalarProperty Name="Firstn" ColumnName="Firstn" />
+                <ScalarProperty Name="Surn1" ColumnName="Surn1" />
+                <ScalarProperty Name="Firstn1" ColumnName="Firstn1" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

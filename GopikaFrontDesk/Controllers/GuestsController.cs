@@ -24,8 +24,8 @@ namespace GopikaFrontDesk.Controllers
             if (!String.IsNullOrEmpty(searchString))
             {
 
-                gst = db.Guests.Where(p => p.Firstn.Contains(searchString)
-                                       || p.Surn.Contains(searchString));
+                gst = db.Guests.Where(p => p.Firstn1.Contains(searchString)
+                                       || p.Surn1.Contains(searchString));
 
                 //page = 1;
                 ViewBag.searchString = searchString;
@@ -81,7 +81,7 @@ namespace GopikaFrontDesk.Controllers
                     ViewBag.To = String.Format("{0:dd-MMM-yyyy}", To);
                 }
             }
-            gst = gst.OrderBy(e => e.Firstn);
+            gst = gst.OrderBy(e => e.Firstn1);
 
             int pageSize = 15;
             int pageNumber = (page ?? 1);
@@ -144,28 +144,16 @@ namespace GopikaFrontDesk.Controllers
                 if (GstImg.UploadedFile != null)
                 {
                     string fn = GstImg.UploadedFile.FileName.Substring(GstImg.UploadedFile.FileName.LastIndexOf('\\') + 1);
-                   fn = GstImg.gst.Firstn.Substring(0,3) + "_" + fn;
-                    //string SavePath = System.IO.Path.Combine(Server.MapPath("~/" + db.Config.FirstOrDefault().ImageSavePath), fn);
-                    //GstImg.UploadedFile.SaveAs(SavePath);
+                   fn = GstImg.gst.Firstn1.Substring(0,3) + "_" + fn;
+               
 
                     System.Drawing.Bitmap upimg = new System.Drawing.Bitmap(GstImg.UploadedFile.InputStream);
                     System.Drawing.Bitmap svimg = MyExtensions.CropUnwantedBackground(upimg);
                     svimg.Save(System.IO.Path.Combine(Server.MapPath("~/IdImgs" ), fn));
 
-                    Guest ed = new Guest
-                    {
-                        Id = GstImg.gst.Id,
-                        Firstn = GstImg.gst.Firstn,
-                        Surn = GstImg.gst.Surn,
-                        Address = GstImg.gst.Address,
-                        Mobile = GstImg.gst.Mobile,
-                        Email= GstImg.gst.Email,
-                        CheckIn = GstImg.gst.CheckIn,
-                        CheckOut= GstImg.gst.CheckOut,
-                        RoomNo= GstImg.gst.RoomNo,
-                        Path= fn                        
-                    };
-
+                    Guest ed = GstImg.gst;
+                    ed.Path = fn;
+                  
                     db.Guests.Add(ed);
                     db.SaveChanges();
                     return RedirectToAction("Details", new { Id = ed.Id });
@@ -208,7 +196,7 @@ namespace GopikaFrontDesk.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Firstn,Surn,Address,Mobile,Email,CheckIn,CheckOut,RoomNo,Path")] Guest guest)
+        public ActionResult Edit([Bind(Include = "Id,Firstn1,Surn1,Firstn2,Surn2,Firstn3,Surn3,Nationality,Company,Address,Mobile,Email,CheckIn,CheckOut,Gst,RoomType,RoomNo,Tarrif,BillingInst,AdvDets,Path")] Guest guest)
         {
             if (ModelState.IsValid)
             {

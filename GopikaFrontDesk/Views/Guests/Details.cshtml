@@ -11,24 +11,22 @@
     <span style="float:right;" class="ButtonNew"><a href="~/Guests/Print/@Model.Id"><span class="glyphicon glyphicon-print"></span></a></span>
     <hr />
     <dl class="dl-horizontal">
+        <dt>Guest name 1:</dt>
+        <dd>@Model.Firstn1 @Model.Surn1 </dd>
+        @if (string.Concat(Model.Firstn2, Model.Surn2).Length > 0)
+        {
+            <dt>Guest name 2:</dt>
+            <dd>@Model.Firstn2 @Model.Surn2 </dd>
+        }
+        @if (string.Concat(Model.Firstn3, Model.Surn3).Length > 0)
+        {
+            <dt>Guest name 3:</dt>
+            <dd>@Model.Firstn3 @Model.Surn3 </dd>
+        }
+        <dt>Company:</dt>
+        <dd>@Model.Company </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Firstn)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Firstn)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Surn)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Surn)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Address)
+            @Html.DisplayNameFor(model => model.Address) :
         </dt>
 
         <dd>
@@ -42,42 +40,49 @@
         <dd>
             @Html.DisplayFor(model => model.Mobile)
         </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Nationality)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nationality)
+        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.Email)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Email)
+            @Model.Email
         </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CheckIn)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CheckIn)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CheckOut)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CheckOut)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.RoomNo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.RoomNo)
-        </dd>
+        <dt>Guest GST:</dt>
+        <dd>@Model.GST</dd>
+        <dt>Billing Instructions:</dt>
+        <dd>@Model.BillingInst </dd>
+        <dt>Advance Details:</dt>
+        <dd>@Model.AdvDets </dd>
 
     </dl>
 </div>
+<table class="table table-bordered table-condensed">
+    <thead>
+        <tr>
+            <th>Arrival</th>
+            <th>Departure</th>
+            <th>Room Type</th>
+            <th>Room No.</th>
+            <th>Tarrif</th>
+        </tr>
+    </thead>
+    <tr>
+        <td>@($"{Model.CheckIn:dd/MMM/yyyy HH:mm}")</td>
+        <td>@($"{Model.CheckOut:dd/MMM/yyyy HH:mm}")</td>
+        <td>@Html.DisplayFor(model => model.RoomType)</td>
+        <td>@Html.DisplayFor(model => model.RoomNo)</td>
+        <td>@Html.DisplayFor(model => model.Tarrif)</td>
+    </tr>
+</table>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
-        <img src="@ViewBag.fn" width=40% />
+        <img src="@ViewBag.fn" width=100% />

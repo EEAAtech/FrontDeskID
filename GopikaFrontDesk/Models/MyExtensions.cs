@@ -27,6 +27,9 @@ namespace GopikaFrontDesk.Models
                 new Point(bmpOriginal.Width-1,0),
                 new Point(bmpOriginal.Width-1,bmpOriginal.Height-1)};
 
+            //Set Tollerance level
+            var tol = 10.00; //Percentage
+
             for (int i = 0; i < 4; i++)
             {
                 SameCorners = 0;
@@ -34,9 +37,9 @@ namespace GopikaFrontDesk.Models
                 for (int j = 0; j < 4; j++)
                 {
                     Color CornerColor = bmpOriginal.GetPixel(Corners[j].X, Corners[j].Y);
-                    if ((CornerColor.R <= baseColor.R * 1.1 && CornerColor.R >= baseColor.R * 0.9) &&
-                        (CornerColor.G <= baseColor.G * 1.1 && CornerColor.G >= baseColor.G * 0.9) &&
-                        (CornerColor.B <= baseColor.B * 1.1 && CornerColor.B >= baseColor.B * 0.9))
+                    if ((CornerColor.R <= baseColor.R * (1+(tol/100.00)) && CornerColor.R >= baseColor.R * (1 - (tol / 100.00))) &&
+                        (CornerColor.G <= baseColor.G * (1+(tol/100.00)) && CornerColor.G >= baseColor.G * (1 - (tol / 100.00))) &&
+                        (CornerColor.B <= baseColor.B * (1+(tol/100.00)) && CornerColor.B >= baseColor.B * (1 - (tol / 100.00))))
                     {
                         SameCorners++;
                     }
@@ -64,9 +67,9 @@ namespace GopikaFrontDesk.Models
                     for (int x = 0; x < width; x++)
                     {
                         c = bmpOriginal.GetPixel(x, y);
-                        bool sameAsBackColor = ((c.R <= baseColor.R * 1.1 && c.R >= baseColor.R * 0.9) &&
-                                                (c.G <= baseColor.G * 1.1 && c.G >= baseColor.G * 0.9) &&
-                                                (c.B <= baseColor.B * 1.1 && c.B >= baseColor.B * 0.9));
+                        bool sameAsBackColor = ((c.R <= baseColor.R * (1+(tol/100.00)) && c.R >= baseColor.R * (1-(tol/100.00))) &&
+                                                (c.G <= baseColor.G * (1+(tol/100.00)) && c.G >= baseColor.G * (1-(tol/100.00))) &&
+                                                (c.B <= baseColor.B * (1+(tol/100.00)) && c.B >= baseColor.B * (1-(tol / 100.00))));
                         if (!sameAsBackColor)
                         {
                             if (!UpperLeftPointFounded)

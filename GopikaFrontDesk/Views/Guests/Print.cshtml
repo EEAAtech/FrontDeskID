@@ -8,86 +8,193 @@
     <style>
         body {
             background: none;
-            font-size:1.5em;
+            font-size: 1.5em;
         }
     </style>
-    </head>
+</head>
 
 <body>
-<header>
-    <img src="~/Custom/Layer.png" width=80% />
-    <hr />
-</header>
+    <header>
+        <img src="~/Custom/Layer.png" width=40% />
+        <hr />
+    </header>
     @{
         ViewBag.Title = "Details";
         Layout = "";
     }
 
-
     <div class="container">
         <div class="row">
-            <div class="col-md-4">
-                <h2>Guest Details of @Model.Firstn @Model.Surn </h2>
-                <hr />
-
-                <dl class="dl-horizontal">
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Address)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.Address)
-                    </dd>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Mobile)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.Mobile)
-                    </dd>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Email)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.Email)
-                    </dd>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.CheckIn)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.CheckIn)
-                    </dd>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.CheckOut)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.CheckOut)
-                    </dd>
-
-                    <dt>
-                        Room No.
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.RoomNo)
-                    </dd>
-
-                </dl>
-
-            </div>
-            <div class="col-md-8">
-                <img src="@ViewBag.fn" width=70% />
+            <div class="col-md-12">
+                <h3 class="text-center"><b>GUEST REGISTRATION CARD</b></h3>
             </div>
         </div>
-    </div>
+        <div class="row">
+            <div class="col-md-12">
+                <table width="100%">
+                    <tr>
+                        <td width="50%">
+                            <table>
+                                <tr>
+                                    <td>Guest 1:</td>
+                                    <td>@Model.Firstn1 @Model.Surn1 </td>
+                                </tr>
+                                <tr>
+                                    @if (string.Concat(Model.Firstn2, Model.Surn2).Length > 0)
+                                    {
+                                        <td>Guest 2:</td>
+                                        <td>@Model.Firstn2 @Model.Surn2 </td>
+                                    }
+                                </tr>
+                                <tr>
+                                    @if (string.Concat(Model.Firstn3, Model.Surn3).Length > 0)
+                                    {
+                                        <td>Guest 3:</td>
+                                        <td>@Model.Firstn3 @Model.Surn3 </td>
+                                    }
+                                </tr>
+                                <tr>
+                                    <td>Nationality:</td>
+                                    <td>@Model.Nationality</td>
+                                </tr><tr>
+                                    <td>Company:</td>
+                                    <td>@Model.Company </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Mobile)
+                                    </td>
 
+                                    <td>
+                                        @Html.DisplayFor(model => model.Mobile)
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Email)
+                                    </td>
+
+                                    <td>
+                                        @Model.Email
+                                    </td>
+                                </tr>
+                            </table>
+                </td>
+                <td witdh="50%">
+                    <table>
+
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Address) :
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(model => model.Address)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>GST:</td>
+                            <td>@Model.GST</td>
+                        </tr>
+                        <tr>
+                            <td>Bill Inst.:</td>
+                            <td>@Model.BillingInst </td>
+                        </tr>
+                        <tr>
+                            <td>Advance:</td>
+                            <td>@Model.AdvDets </td>
+                        </tr>
+
+                    </table>
+
+                </td>
+                </tr>
+                </table>
+            </div>
+
+            <table class="table table-bordered table-condensed">
+                <thead>
+                    <tr>
+                        <th>Arrival</th>
+                        <th>Departure</th>
+                        <th>Room Type</th>
+                        <th>Room No.</th>
+                        <th>Tarrif</th>
+                    </tr>
+                </thead>
+                <tr>
+                    <td>@($"{Model.CheckIn:dd/MMM/yyyy HH:mm}")</td>
+                    <td>@($"{Model.CheckOut:dd/MMM/yyyy HH:mm}")</td>
+                    <td>@Html.DisplayFor(model => model.RoomType)</td>
+                    <td>@Html.DisplayFor(model => model.RoomNo)</td>
+                    <td>@Html.DisplayFor(model => model.Tarrif)</td>
+                </tr>
+            </table>
+            <ul class="small">
+                <li>
+                    For your own security, visitors are not permitted in guest rooms without prior Intimation and valid photo ID proof. Kindly provide these details at the front desk. The visitors will need to be escorted by the in house guest. Visitors are not permitted in the guest room after 10.00 p.m. <Br />
+                </li>
+                <li>
+                    Whilst care is taken to ensure that the description of our facilities and services is accurate, these are continually being changed, upgraded, and on occasion taken out of service. <Br />
+                </li>
+                <li>
+                    No Pets & Arms or Ammunitions are allowed on the hotel premises. <Br />
+                </li>
+                <li>
+                    Our rooms come equipped with all necessary amenities. However should you require anything additional like Pillows, Dental & Shaving Kit, please call front desk on phone number 9. <Br />
+                </li>
+                <li>
+                    Consumption of alcohol is not permitted in public areas. It is a punishable offence. <Br />
+                </li>
+                <li>
+                    Kindly refrain from using Boom Boxes or Bluetooth speakers in public areas to observe decorum of the hotel and the comfort of other guests. <Br />
+                </li>
+                <li>
+                    All terms & conditions are at the discretion of the hotel management. <Br />
+                </li>
+                <li>
+                    Kindly refrain from using public areas for personal usage like drying/hanging clothes. The management reserves the right to confiscate any clothing which is hung outside the rooms. <Br />
+                </li>
+                <li>
+                    Any damage/misuse or missing items from the hotel room / public areas will be charged to the guest at the replacement value. <Br />
+                </li>
+                <li>
+                    All disputes are subject to the management policy and legally to the Panjim Court Jurisdiction only. <Br />
+                </li>
+            </ul>
+            <table class="table">
+                <tr>
+                    <td>
+                        @*<strong>
+                            I/We have been advised that all rooms at Hotel Gopika International,
+                            Miramar are Non Smoking Rooms, and should I/We still choose to
+                            smoke in the rooms, I/We agree to pay a charge of Rs.2000/- as
+                            Cleaning fee.
+                        </strong>*@
+                            <img src="~/Custom/NoSmoke.jpg" />
+                    </td>
+                </tr>
+            </table>
+            
+            <p>
+                I have read, understood and agree to adhere to all terms and conditions and agree to pay all the charges incurred by me during my stay in the hotel.
+            </p>
+            <br />
+         
+            <br />
+            <br />
+            <table class="table table-condensed">
+                <tr>
+                    <td width="40%">
+                        Hotel Gopika International
+                    </td>
+                    <td width="40%"></td>
+                    <td width="20%">
+                        Guest's Signature
+                    </td>
+                </tr>
+            </table>
+        </div>
 </body>
 </html>

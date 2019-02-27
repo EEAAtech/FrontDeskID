@@ -26,12 +26,12 @@ namespace GopikaFrontDesk
         [Required]        
         [StringLength(50)]
         [Display(Name = "First Name")]
-        public string Firstn { get; set; }
+        public string Firstn1 { get; set; }
 
         [Required]
         [StringLength(50)]
         [Display(Name = "Surname")]
-        public string Surn { get; set; }
+        public string Surn1 { get; set; }
 
         [StringLength(300)]
         public string Address { get; set; }
